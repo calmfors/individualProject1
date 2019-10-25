@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Erik runs - skorecensioner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora%7COpen+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="desktop"><a href="index.html">Start</a></li>
+            <li class="mobile dropdown desktop">
+                <span><img class="hamburger" src="img/menu.svg" alt="Mobil menysymbol"> MENY
+                </span>
+                <span class="dropdown-content">
+                    <a href="index.html">&nbsp;Start</a>
+                    <a href="reviews.html">&nbsp;Recensioner</a>
+                    <a href="reviews.html#0"><span>&nbsp;&nbsp;&nbsp;Altra Superior 4</span></a>
+                    <a href="reviews.html#1"><span>&nbsp;&nbsp;&nbsp;Altra Lone Peak 4</span></a>
+                    <a href="contact.html">&nbsp;Kontakt</a>
+                    <a href="about.html">&nbsp;Om</a>
+                </span>
+            <li class="dropdown desktop">
+                <a href="reviews.html">Recensioner</a>
+                <span class="dropdown-content">
+                    <a href="reviews.html#0">Altra Superior 4</a>
+                    <a href="reviews.html#1">Altra Lone Peak 4</a>
+                </span>
+            </li>
+            <li><img src="./img/logoWhite.svg" alt="Erik runs logga"></li>
+            <li class="desktop"><a href="contact.html">Kontakt</a></li>
+            <li class="desktop"><a href="about.html">Om</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section class="review main">
+            <article id="fromJS">
+                <!-- Här kommer recensionerna in från reviews.js -->
+            </article>
+
+            <form id="form">
+                <h2>Vad tycker du? Skriv en kommentar!</h2>
+                <label for="name">NAMN</label>
+                <input type="text" class="input" id="name" name="name">
+                <label for="email">E-POSTADRESS (visas ej)</label>
+                <input type="text" class="input" id="email" name="email">
+                <label for="comment">KOMMENTAR</label>
+                <textarea rows="5" cols="50" id="comment" name="comment"></textarea>
+                <input type="submit"><span id="error"></span>
+            </form>
+            <div>
+                <span id="comments">
+                    <!-- Här kommer kommentarer från review.js -->
+                </span>
+            </div>
+        </section>
+        <aside class="side">
+            <p>Senaste recensionerna</p>
+            <div><a href="reviews.html#0"><img src="img/shoe0small.png" alt="Testad sko."><span class="bold">Trail
+                        light</span><br>Lätt
+                    trailsko som fungerar (nästan) överallt.</a></div>
+
+
+            <div><a href="reviews.html#1"><img src="img/shoe1small.png" alt="Testad sko."><span class="bold">Tung
+                        favorit</span><br>Kompromisslös pålitlig tungviktare som levererar i tuff terräng.</a></div>
+
+        </aside>
+    </div>
+    <script type="module" src="reviews.js"></script>
+</body>
+
+</html>
