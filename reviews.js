@@ -27,9 +27,9 @@ var fakeComments = [{
     "date": "2019-10-24"
 }];
 
-if (oldComments == null) {
+if (!oldComments) {
     oldComments = fakeComments;
-} else {
+} else if (oldComments[0].name !== "Karolina") {
     oldComments.push(fakeComments);
 };
 
@@ -39,7 +39,7 @@ var commentInput = document.getElementById("comment");
 var comments = document.getElementById("comments");
 var label = document.getElementsByTagName("label")
 
-// Adderar EN lyssnare på formuläret vid refresh
+// Adderar en lyssnare på formuläret vid refresh
 window.onload = listenComment();
 
 // Valideringsfunktioner lånade från https://www.tutorialspoint.com och ändrade av mig
@@ -85,9 +85,7 @@ function listenInput() {
 
 // Nollställer felmeddelande
 function resetError() {
-    nameInput.classList.remove("error")
-    emailInput.classList.remove("error")
-    commentInput.classList.remove("error")
+    this.classList.remove("error")
     for (let i = 0; i < label.length; i++) {
         label[i].style.color = "black"
     }
@@ -100,7 +98,7 @@ function showComments() {
     var index = checkHash()
     oldComments.forEach(function (comment) {
         if (comment.index == index) {
-            comments.innerHTML += "<p><span class=\"bold\">" + comment.name + "</span>, " + comment.date + ": " + comment.comment + "</p>";
+            comments.innerHTML += `<p><span class="bold">${comment.name}</span>, ${comment.date}: ${comment.comment}</p>`;
         }
     })
 }
@@ -113,6 +111,7 @@ function listenComment() {
         var comment = commentInput.value;
         var date = new Date().toISOString().slice(0, 10)
         var index = checkHash()
+        console.log(oldComments)
         if (validateName(name) && validateEmail(email) && validateComment(comment)) {
             oldComments.push({ index, name, email, comment, date });
             localStorage.setItem("comments", JSON.stringify(oldComments));
@@ -173,13 +172,13 @@ function createHTML(object) {
     while (grade.length < 35) {
         grade += "&#9734;"
     }
-    review.innerHTML += "<div class=\"crop\"><img src=\"./bilder/shoe" + x + ".jpg\" alt=\"Testad sko.\"></div>";
-    review.innerHTML += "<h1>" + object[x].name + " <span class=\"grade\">" + grade + "</span></h1>";
-    review.innerHTML += "<span class=\"bold\">Vikt: </span>" + object[x].weight + " gram<br>";
-    review.innerHTML += "<span class=\"bold\">Drop: </span>" + object[x].drop + " millimeter<br>";
-    review.innerHTML += "<span class=\"bold\">Användning: </span>" + object[x].use + "<br>";
-    review.innerHTML += "<h2>" + object[x].headline + "</h2>";
-    review.innerHTML += "<p class=\"reviewText\">" + object[x].review + "</p>";
+    review.innerHTML += `<div class="crop"><img src="./img/shoe${x}.jpg" alt="Testad sko."></div>`;
+    review.innerHTML += `<h1> ${object[x].name} <span class="grade"> ${grade}</span></h1>`;
+    review.innerHTML += `<span class="bold">Vikt: </span> ${object[x].weight} gram<br>`;
+    review.innerHTML += `<span class="bold">Drop: </span> ${object[x].drop} millimeter<br>`;
+    review.innerHTML += `<span class="bold">Användning: </span> ${object[x].use}<br>`;
+    review.innerHTML += `<h2> ${object[x].headline}</h2>`;
+    review.innerHTML += `<p class="reviewText">${object[x].review}</p>`;
     grade = ""
     showComments()
 }
