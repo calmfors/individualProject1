@@ -179,6 +179,7 @@ function createHTML(object) {
     review.innerHTML += `<span class="bold">Användning: </span> ${object[x].use}<br>`;
     review.innerHTML += `<h2> ${object[x].headline}</h2>`;
     review.innerHTML += `<p class="reviewText">${object[x].review}</p>`;
-    grade = ""
+    grade = "";
+    // document.getElementsByClassName("dropdown-content")[0].style.display = "none";
     showComments()
 }
