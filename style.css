@@ -113,7 +113,7 @@ nav img{
     margin-top: 100px;
     margin-right: 30px;
     width: 75%;
-    z-index: -98;
+    /* z-index: -98; */
 }
 .mainP{
     display: none;
@@ -255,19 +255,10 @@ textarea{
     margin-bottom:-5px;
     font-size: 16px;
 }
-.crop{
-  position: relative;
-  height: 0;
-  padding-top: calc(310 / 579 * 100%);
-}
 
 .crop img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  max-width: 100%;
-  height: auto; 
-  z-index: -99;
+    width: 100%;
+    height: auto; 
 }
 
 @media screen and (max-width: 600px) {
@@ -311,10 +302,9 @@ textarea{
     .crop{
         width:100%;
         overflow: hidden;
-        padding-top: calc(310 / 579 * 175%);
-    }
+    } 
     .crop img{
-        left:-65%;
+        margin-left:-65%;
         max-width:175%;
         width: 175%;
     }

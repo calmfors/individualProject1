@@ -101,7 +101,7 @@ function showComments() {
             comments.innerHTML += `<p><span class="bold">${comment.name}</span>, ${comment.date}: ${comment.comment}</p>`;
         }
     })
-}
+};
 
 // Lyssnar om användaren lämnar en kommentar
 function listenComment() {
@@ -111,7 +111,6 @@ function listenComment() {
         var comment = commentInput.value;
         var date = new Date().toISOString().slice(0, 10)
         var index = checkHash()
-        console.log(oldComments)
         if (validateName(name) && validateEmail(email) && validateComment(comment)) {
             oldComments.push({ index, name, email, comment, date });
             localStorage.setItem("comments", JSON.stringify(oldComments));
@@ -180,6 +179,5 @@ function createHTML(object) {
     review.innerHTML += `<h2> ${object[x].headline}</h2>`;
     review.innerHTML += `<p class="reviewText">${object[x].review}</p>`;
     grade = "";
-    // document.getElementsByClassName("dropdown-content")[0].style.display = "none";
     showComments()
 }
